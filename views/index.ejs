@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>What Happened On This Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Titan+One&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+
+</head>
+
+<body>
+  <h1>On the <%=dayNice %> of <%=monthNice%> <%=content.year%>  
+    
+  <div class="card">
+    <p>
+      <%if (locals.content){ %>
+      <%= content.description %>
+      <% }  else {%> A Random Secret Awaits <%} %>
+    </p>
+  </div>
+  <p class="user">
+    <%if (locals.content){ %>
+            <ul>
+        <% for (let i=0; i< content.wikipedia.length; i++) { %>
+          <li class="wikititle"> <a class="wikititle" href="<%= content.wikipedia[i].wikipedia %>"><%= (i+1) + ". " + content.wikipedia[i].title + "."%></a> </li>
+          <br> 
+        
+       <% } %>
+
+      </ul>
+      
+      <% } else { %> A Random Secret Awaits <%} %>
+     </p>
+
+
+    </div>
+    <form id="myForm" method="post">
+   
+      <label for="scoreInput">Day:</label>
+      <input type="number" id="dayInput" name="day" min="1" max="31">
+
+      <label for="monthInput">Month:</label>
+      <input type="number" id="monthInput" name="Month" min="1" max="12">
+
+       <input id="get" type="submit" value="Submit Date" formaction="/get-date">
+
+    </form>
+  </div>
+
+
+</body>
+
+</html>
